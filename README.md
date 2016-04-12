@@ -15,10 +15,10 @@ A simple wechat room using node + express + socket.io ，
 
 ##在线访问地址
 
-[http://v5cy.cn:8088/m/um/index.html](http://v5cy.cn:8088/m/um/index.html "在线群聊demo")
+[http://v5cy.cn:8088/git/um/index.html](http://v5cy.cn:8088/git/um/index.html "在线群聊demo")
 
 ##界面展示
 
-![](http://v5cy.cn:8088/dist/imgs/1.png)
+![](http://v5cy.cn:8088/git/um/img/1.png)
 
-![](http://v5cy.cn:8088/dist/imgs/2.png)
+![](http://v5cy.cn:8088/git/um/img/2.png)
