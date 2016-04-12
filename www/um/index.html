@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>U&M</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+  <meta name="description" content="不知，无知，色即是空，空即是色！">
+
+  <link rel="stylesheet" href="css/animate.css"/>
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+
+  <img style="position: absolute;top: -1000px;" src="img/dot.png" alt=""/>
+  <ul class="pages">
+    <!-- chat list-->
+    <li class="chat page">
+      <div class="chatArea">
+        <ul id="scrollMsg" class="messages"></ul>
+      </div>
+      <div id="inputCtrBox" class="message-input-box t-right">
+        <!-- input box-->
+        <div class="input-info">
+
+          <input id="saytext" type="text" class="inputMessage" placeholder="说点什么..."/>
+          <!--<div id="sendMessage" class="send">发送</div>-->
+          <div id="emoej" class="emotion"></div>
+          <div id="moreBtn" class="more"></div>
+        </div>
+
+        <!-- more box-->
+        <div id="moreBox" class="more-box">
+            <div id="moreCtr">
+              <div class="more-item">
+                <div class="item-wrap type-img"><input id="chooseImg" type="file" accept="image/!*" capture="camera" /></div>
+                <div class="more-des">图片</div>
+              </div>
+              <div class="more-item">
+                <div id="pay" class="item-wrap type-money"></div>
+                <div class="more-des">打赏</div>
+              </div>
+
+              <div id="admin" class="more-item hide">
+                <div id="gGao" class="item-wrap type-alert"></div>
+                <div class="more-des">发送公告</div>
+              </div>
+            </div>
+
+            <div id="wrapFace">
+              <div class="emoj-box"><div id="sendMessage" class="semoj">发送</div></div>
+            </div>
+          
+        </div>
+      </div>
+    </li>
+
+
+    <!--logo in -->
+    <li class="login page">
+      <div class="form">
+        <h3 class="title">您本性是什么色？</h3>
+        <input class="usernameInput" type="text" maxlength="14" />
+        <div class="t-center" style="margin-top: 30px">
+          <div id="start" class="btn">进入色聊U&M</div>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <!-- upload img -->
+  <div id="imgUpload" class="img-upload hide anim-fast slideInUp">
+    <div id="preShow">
+      <div><img id="upImg" class="up-img" src="" alt=""/></div>
+    </div>
+    <div class="up-btn">
+      <div id="sendUpImg" class="send-img">发送</div>
+      <div class="send-cancel">取消</div>
+    </div>
+  </div>
+
+  <!-- show upload img-->
+  <div id="showImgBox" class="show-big hide anim zoomIn">
+    <div id="chatShow">
+      <div><img id="showImg" src="" alt=""/></div>
+    </div>
+    <i class="close">X</i>
+  </div>
+
+  <!-- pay money-->
+  <div class="get-money hide anim-fast slideInUp">
+    <p class="money-info">大爷，美女们，给点钱吧！（长按识别）</p>
+    <img src="img/getmoney.jpg" alt=""/>
+    <i class="close">X</i>
+  </div>
+
+  <!-- alert-->
+  <div id="alert" class="anim-fast slideInDown hide">
+    <span class="icon-alert"></span>
+    <p id="alertCon" class="alert-con">
+      1：新增打赏功能，用钱砸我吧，亲们;<br>
+      2：按换行键发送消息;<br>
+      3：支持电脑登陆;
+    </p>
+    <i class=" alert-close">X</i>
+  </div>
+
+  <audio id="msg" hidden src="img/msg.mp3"></audio>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="lib/jquery.min.js"></script>
+  <script src="plugins/wxapi.js"></script>
+  <script src="plugins/jquery.qqFace.js"></script>
+  <script src="lib/iscroll4.js"></script>
+  <script src="lib/lrz.mobile.min.js"></script>
+  <script src="lib/fastclick.js"></script>
+  <script src="plugins/main.js"></script>
+
+  <script>
+    $(function () {
+
+
+      var wx = new WxApi();
+      wx.share({});
+
+      $('.emotion').qqFace({
+        id : 'facebox',
+        assign:'saytext',
+        path:'arclist/',	//表情存放的路径
+        wrap: 'wrapFace'
+      });
+
+      FastClick.attach(document.body);
+
+      $(".sub_btn").click(function(){
+        var str = $("#saytext").val();
+        $("#show").html(replace_em(str));
+      });
+
+      function replace_em(str){
+        str = str.replace(/\</g,'&lt;');
+        str = str.replace(/\>/g,'&gt;');
+        str = str.replace(/\n/g,'<br/>');
+        str = str.replace(/\[em_([0-9]*)\]/g,'<img src="arclist/$1.gif" border="0" />');
+        return str;
+      }
+
+      //修复滑动问题
+      $('.input-info')[0].addEventListener('touchmove', function (e) {
+        e.preventDefault();
+      });
+
+
+      $('#scrollMsg').on('scroll', function () {
+        var ele = $(this)[0],
+            startScrollTop =  ele.scrollTop;
+
+        if (startScrollTop <= 0) {
+          ele.scrollTop = 1;
+        }
+
+        if (startScrollTop + ele.offsetHeight >= ele.scrollHeight) {
+          ele.scrollTop = ele.scrollHeight - ele.offsetHeight - 1;
+        }
+      });
+
+    });
+  </script>
+</body>
+</html>
