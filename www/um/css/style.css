@@ -11,13 +11,13 @@ html {
 
 html, input {
   font-family:
+    sans-serif,
     "HelveticaNeue-Light",
     "Helvetica Neue Light",
     "Helvetica Neue",
     Helvetica,
     Arial,
-    "Lucida Grande",
-    sans-serif;
+    "Lucida Grande";
 }
 
 html, body {
@@ -243,7 +243,16 @@ ul {
 .img-upload {
   background-color: #000;
 }
-
+.userhead {
+  position: absolute;
+  bottom: -15px;
+  color: #333;
+  height: 13px;
+  font-weight: lighter;
+  font-size: 0.7rem;
+  right: 6px;
+  overflow: hidden;
+}
 .log {
   color: gray;
   font-size: 0.8rem;
@@ -255,8 +264,7 @@ ul {
   font-size: 0.8rem;
   display: inline-block;
   padding: 3px 6px;
-  border-radius: 28%;
-  border: 1px solid rgba(0,0,0,0.2);
+  border-bottom: 1px dashed rgba(0,0,0,0.2);
 }
 
 /* Messages */
@@ -561,7 +569,7 @@ ul {
 }
 
 .message {
-  padding: 5px 0;
+  padding: 8px 0;
 }
 
 .message:after {

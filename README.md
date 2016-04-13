@@ -2,6 +2,7 @@
 >2016-04-13
 
 - 新增表情删除功能
+- 新增点击头像查看用户名
 
 # node-wechat-room
 A simple wechat room using node + express + socket.io ，
