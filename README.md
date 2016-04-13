@@ -1,3 +1,8 @@
+##Bug and News
+>2016-04-13
+
+- 新增表情删除功能
+
 # node-wechat-room
 A simple wechat room using node + express + socket.io ，
 一个简单的基于nodejs express socket 的防微信聊天室：

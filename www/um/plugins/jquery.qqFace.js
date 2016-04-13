@@ -37,7 +37,7 @@
 				}
 				strFace += '</tr></table></div>';
 			}
-		    	if ($('#'+ wrap)) {
+			if ($('#'+ wrap)) {
 			    $('#' + wrap).append(strFace);
 
 			} else {

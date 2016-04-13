@@ -399,17 +399,28 @@ ul {
 
 .semoj {
   position: absolute;
-  bottom: 5px;
+  bottom: 3px;
   right: 5px;
   width: 50px;
-  height: 25px;
+  height: 28px;
   font-size: 0.8rem;
-  line-height: 25px;
+  line-height: 28px;
   text-align: center;
   border-radius: 3px;
   background-color: #007aff;
   color: #fff;
 }
+
+.dese {
+  width: 40px;
+  right: 65px;
+  background: url(../img/back.png) no-repeat;
+  background-size: contain;
+  background-position: center center;
+  background-color: #ccc;
+}
+
+
 .emoj-box {
   position: absolute;
   bottom: 0;
